@@ -6,7 +6,7 @@ using System.Threading;
 using SqlConnect;
 using MySql.Data.MySqlClient;
 
-namespace THESIS
+namespace Automated-Text-Sending-Application
 {
     class GSMsms
     {
