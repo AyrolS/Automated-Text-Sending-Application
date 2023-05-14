@@ -51,10 +51,10 @@ namespace THESIS
                     Console.WriteLine(response);
                     string message = response;
 
-                    //distance 4 = 3 ft away from sensor
+                    //distance 4
                     if (message.IndexOf("distance 4", StringComparison.OrdinalIgnoreCase) >= 0){
                         db.Open();
-                        string query1 = $"INSERT INTO pic_reports (water_level, report_time) VALUES ('3 feet away from sensor', NOW())";
+                        string query = $"INSERT INTO table_x (column_1, column_2) VALUES ('x feet away from sensor', NOW())";
                 
                         MySqlCommand command = new MySqlCommand(query1, db.Connection);
                         int rowsAffected = command.ExecuteNonQuery();
@@ -71,10 +71,10 @@ namespace THESIS
 
                         continue;
                     }
-                    //distance 3 = 2 ft away from sensor
+                    //distance 3 
                     else if(message.IndexOf("distance 3", StringComparison.OrdinalIgnoreCase) >= 0){
                         db.Open();
-                        string query2 = $"INSERT INTO pic_reports (water_level, report_time) VALUES ('2 feet away from sensor', NOW())";
+                         string query = $"INSERT INTO table_x (column_1, column_2) VALUES ('x feet away from sensor', NOW())";
                 
                         MySqlCommand command = new MySqlCommand(query2, db.Connection);
                         int rowsAffected = command.ExecuteNonQuery();
@@ -90,10 +90,10 @@ namespace THESIS
 
                         continue;
                     }
-                    //distance 2 = 1 ft away from sensor
+                    //distance 2 
                     else if(message.IndexOf("distance 2", StringComparison.OrdinalIgnoreCase) >= 0){
                         db.Open();
-                        string query3 = $"INSERT INTO pic_reports (water_level, report_time) VALUES ('1 feet away from sensor', NOW())";
+                       string query = $"INSERT INTO table_x (column_1, column_2) VALUES ('x feet away from sensor', NOW())";;
                 
                         MySqlCommand command = new MySqlCommand(query3, db.Connection);
                         int rowsAffected = command.ExecuteNonQuery();
@@ -109,10 +109,10 @@ namespace THESIS
 
                         continue;
                     }
-                    //distance 1 = 0.5 ft away from sensor
+                    //distance 1 
                     else if (message.IndexOf("distance 1", StringComparison.OrdinalIgnoreCase) >= 0){
                         db.Open();
-                        string query2 = $"INSERT INTO pic_reports (water_level, report_time) VALUES ('0.5 feet away from sensor', NOW())";
+                        string query = $"INSERT INTO table_x (column_1, column_2) VALUES ('x feet away from sensor', NOW())";;
                 
                         MySqlCommand command = new MySqlCommand(query2, db.Connection);
                         int rowsAffected = command.ExecuteNonQuery();
@@ -150,7 +150,7 @@ namespace THESIS
             string query = "SELECT co_number FROM account WHERE LENGTH(co_number) = 13";
             MySqlDataReader reader = db.ExecuteQuery(query);
 
-            string message = "ALERT LEVEL 1 MODERATE. This text is from the ALERT MONITORING SYSTEM.";
+            string message = "ALERT LEVEL 1";
 
             while (reader.Read())
             {
@@ -197,7 +197,7 @@ namespace THESIS
             string query = "SELECT co_number FROM account WHERE LENGTH(co_number) = 13";
             MySqlDataReader reader = db.ExecuteQuery(query);
 
-            string message = "ALERT LEVEL 2 ALMOST CRITICAL.";
+            string message = "ALERT LEVEL 2";
 
             while (reader.Read())
             {
@@ -244,7 +244,7 @@ namespace THESIS
             string query = "SELECT co_number FROM account WHERE LENGTH(co_number) = 13";
             MySqlDataReader reader = db.ExecuteQuery(query);
 
-            string message = "ALERT LEVEL 3 CRITICAL.";
+            string message = "ALERT LEVEL 3";
 
             while (reader.Read())
             {
@@ -291,7 +291,7 @@ namespace THESIS
             string query = "SELECT co_number FROM account WHERE LENGTH(co_number) = 13";
             MySqlDataReader reader = db.ExecuteQuery(query);
 
-            string message = "ALERT LEVEL 4 EMERGENCY. EVACUATE NOW.";
+            string message = "ALERT LEVEL 4";
 
             while (reader.Read())
             {
