@@ -1,5 +1,5 @@
 # Automated-Text-Sending-Application
-GSM Module connected with a UART to TTL converter. Application made in C#.
+GSM Module connected with a UART to TTL converter. Application made in C#. I made this application for it's purpose to alert registered users the rise of water level from an ultrasonic sensor with two gsm modules.
 
 note: This system runs on a local made database on PhpMyAdmin.
 
