@@ -39,6 +39,7 @@ namespace Automated-Text-Sending-Application
 
             Console.WriteLine("Waiting for incoming message...");
             
+            string lastAlert = "";
             
             while (true)
             {
@@ -52,17 +53,22 @@ namespace Automated-Text-Sending-Application
                     string message = response;
 
                     //distance 4
-                    if (message.IndexOf("distance 4", StringComparison.OrdinalIgnoreCase) >= 0){
-                        db.Open();
-                        string query = $"INSERT INTO table_x (column_1, column_2) VALUES ('x feet away from sensor', NOW())";
-                
-                        MySqlCommand command = new MySqlCommand(query1, db.Connection);
-                        int rowsAffected = command.ExecuteNonQuery();
+                    if (message.IndexOf("distance 4", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        string currentAlert = "d4";
+                        if(currentAlert != lastAlert){
+                            db.Open();
+                            string query = $"INSERT INTO table_x (column_1, column_2) VALUES ('x feet away from sensor', NOW())";
 
-                        if(rowsAffected > 0){
-                            Console.WriteLine($"{rowsAffected} rows affected.");
-                            sms.send_alert1();
-                            db.Close();
+                            MySqlCommand command = new MySqlCommand(query1, db.Connection);
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            if(rowsAffected > 0){
+                                Console.WriteLine($"{rowsAffected} rows affected.");
+                                sms.send_alert1();
+                                lastAlert = currentAlert;
+                                db.Close();
+                            }
                         }
 
                         AT = $"AT+CMGD=1,4\r\n"; //deletes all messages for a fresh inbox everytime
@@ -72,16 +78,21 @@ namespace Automated-Text-Sending-Application
                         continue;
                     }
                     //distance 3 
-                    else if(message.IndexOf("distance 3", StringComparison.OrdinalIgnoreCase) >= 0){
-                        db.Open();
-                         string query = $"INSERT INTO table_x (column_1, column_2) VALUES ('x feet away from sensor', NOW())";
-                
-                        MySqlCommand command = new MySqlCommand(query2, db.Connection);
-                        int rowsAffected = command.ExecuteNonQuery();
-                        if(rowsAffected > 0){
-                            Console.WriteLine($"{rowsAffected} rows affected.");
-                            sms.send_alert2();
-                            db.Close();
+                    else if(message.IndexOf("distance 3", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        string currentAlert = "d3";
+                        if(currentAlert != lastAlert){
+                            db.Open();
+                            string query = $"INSERT INTO table_x (column_1, column_2) VALUES ('x feet away from sensor', NOW())";
+
+                            MySqlCommand command = new MySqlCommand(query2, db.Connection);
+                            int rowsAffected = command.ExecuteNonQuery();
+                            if(rowsAffected > 0){
+                                Console.WriteLine($"{rowsAffected} rows affected.");
+                                sms.send_alert2();
+                                lastAlert = currentAlert;
+                                db.Close();
+                            }
                         }
 
                         AT = $"AT+CMGD=1,4\r\n"; //deletes all messages for a fresh inbox everytime
@@ -91,16 +102,21 @@ namespace Automated-Text-Sending-Application
                         continue;
                     }
                     //distance 2 
-                    else if(message.IndexOf("distance 2", StringComparison.OrdinalIgnoreCase) >= 0){
-                        db.Open();
-                       string query = $"INSERT INTO table_x (column_1, column_2) VALUES ('x feet away from sensor', NOW())";;
-                
-                        MySqlCommand command = new MySqlCommand(query3, db.Connection);
-                        int rowsAffected = command.ExecuteNonQuery();
-                        if(rowsAffected > 0){
-                            Console.WriteLine($"{rowsAffected} rows affected.");
-                            sms.send_alert3();
-                            db.Close();
+                    else if(message.IndexOf("distance 2", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        string currentAlert = "d2";
+                        if(currentAlert != lastAlert){
+                           db.Open();
+                           string query = $"INSERT INTO table_x (column_1, column_2) VALUES ('x feet away from sensor', NOW())";;
+
+                            MySqlCommand command = new MySqlCommand(query3, db.Connection);
+                            int rowsAffected = command.ExecuteNonQuery();
+                            if(rowsAffected > 0){
+                                Console.WriteLine($"{rowsAffected} rows affected.");
+                                sms.send_alert3();
+                                lastAlert = currentAlert;
+                                db.Close();
+                            }
                         }
 
                         AT = $"AT+CMGD=1,4\r\n"; //deletes all messages for a fresh inbox everytime
@@ -110,16 +126,21 @@ namespace Automated-Text-Sending-Application
                         continue;
                     }
                     //distance 1 
-                    else if (message.IndexOf("distance 1", StringComparison.OrdinalIgnoreCase) >= 0){
-                        db.Open();
-                        string query = $"INSERT INTO table_x (column_1, column_2) VALUES ('x feet away from sensor', NOW())";;
-                
-                        MySqlCommand command = new MySqlCommand(query2, db.Connection);
-                        int rowsAffected = command.ExecuteNonQuery();
-                        if(rowsAffected > 0){
-                            Console.WriteLine($"{rowsAffected} rows affected.");
-                            sms.send_alert4();
-                            db.Close();
+                    else if (message.IndexOf("distance 1", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        string currentAlert = "d1";
+                        if(currentAlert != lastAlert){
+                            db.Open();
+                            string query = $"INSERT INTO table_x (column_1, column_2) VALUES ('x feet away from sensor', NOW())";;
+
+                            MySqlCommand command = new MySqlCommand(query2, db.Connection);
+                            int rowsAffected = command.ExecuteNonQuery();
+                            if(rowsAffected > 0){
+                                Console.WriteLine($"{rowsAffected} rows affected.");
+                                sms.send_alert4();
+                                lastAlert = currentAlert;
+                                db.Close();
+                            }
                         }
                         
                         AT = $"AT+CMGD=1,4\r\n"; //deletes all messages for a fresh inbox everytime
