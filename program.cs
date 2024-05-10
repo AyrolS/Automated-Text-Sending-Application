@@ -2,7 +2,6 @@ using System;
 using SqlConnect;
 using MySql.Data.MySqlClient;
 using System.IO.Ports;
-using THESIS;
 
 class Program
 {
